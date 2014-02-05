@@ -11,9 +11,10 @@ namespace Steg1_3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            TextBoxStartTemp.Focus();
         }
 
+        //Utför temperaturkonvertering och presenterar resultat i form av en tabell
         protected void ButtonConvert_Click(object sender, EventArgs e)
         {
             if (Page.IsValid)
@@ -23,9 +24,10 @@ namespace Steg1_3
                 var step = int.Parse(TextBoxStepTemp.Text);
                 var steps = (end - start) / step;
 
-
+                //Tabell för Celsius till Fahrenheit
                 if (RadioButtonListConversionType.SelectedValue == "CtoF")
                 {
+                    //Header
                     TableHeaderRow thRow = new TableHeaderRow();
                     Table1.Rows.Add(thRow);
                     TableHeaderCell thCell1 = new TableHeaderCell();
@@ -34,6 +36,7 @@ namespace Steg1_3
                     TableHeaderCell thCell2 = new TableHeaderCell();
                     thCell2.Text = "&deg; F";
                     thRow.Cells.Add(thCell2);
+                    //Body
                     for (int i = start; i <= end; i += step)
                     {
                         TableRow tRow = new TableRow();
@@ -47,8 +50,10 @@ namespace Steg1_3
                     }
                 }
 
+                //Tabell för Fahrenheit till Celsius
                 if (RadioButtonListConversionType.SelectedValue == "FtoC")
                 {
+                    //Header
                     TableHeaderRow thRow = new TableHeaderRow();
                     Table1.Rows.Add(thRow);
                     TableHeaderCell thCell1 = new TableHeaderCell();
@@ -57,6 +62,7 @@ namespace Steg1_3
                     TableHeaderCell thCell2 = new TableHeaderCell();
                     thCell2.Text = "&deg; C";
                     thRow.Cells.Add(thCell2);
+                    //Body
                     for (int i = start; i <= end; i += step)
                     {
                         TableRow tRow = new TableRow();
